@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class GamesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $games = [
             'Final Fantasy - X',
@@ -14,11 +14,6 @@ class GamesController extends Controller
             'AC - Odyssey'
         ];
 
-        $html = '<ul>';
-        foreach ($games as $game) {
-            $html .= "<li>$game</li>";
-        }
-        $html .= '</ul>';
-        echo $html;
+        return view('listar-games', compact('games'));
     }
 }
