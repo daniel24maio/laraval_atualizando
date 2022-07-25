@@ -14,6 +14,11 @@ class GamesController extends Controller
             'AC - Odyssey'
         ];
 
-        return view('listar-games', compact('games'));
+        return view('games.index', compact('games'));
+    }
+
+    public function create()
+    {
+        return view('games.create');
     }
 }
