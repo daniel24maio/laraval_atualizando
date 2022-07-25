@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/games', [\App\Http\Controllers\GamesController::class, 'listarGames']);
+Route::get('/games', [\App\Http\Controllers\GamesController::class, 'index']);
