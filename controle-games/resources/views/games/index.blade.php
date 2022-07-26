@@ -1,8 +1,8 @@
 <x-layout title="Games" >
-    <a href="/games/criar">Adicionar Game</a>
-    <ul>
+    <a href="/games/criar" class="btn btn-dark mb-2">Adicionar Game</a>
+    <ul class="list-group">
         @foreach ($games as $game)
-        <li>{{$game}}</li>
+        <li class="list-group-item">{{$game}}</li>
         @endforeach
     </ul>
 </x-layout>
