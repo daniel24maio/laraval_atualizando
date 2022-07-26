@@ -19,3 +19,5 @@ Route::get('/', function () {
 
 Route::get('/games', [\App\Http\Controllers\GamesController::class, 'index']);
 Route::get('/games/criar', [\App\Http\Controllers\GamesController::class, 'create']);
+Route::post('/games/salvar', [\App\Http\Controllers\GamesController::class, 'store']);
+

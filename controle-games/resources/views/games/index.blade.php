@@ -1,8 +1,19 @@
 <x-layout title="Games" >
     <a href="/games/criar" class="btn btn-dark mb-2">Adicionar Game</a>
-    <ul class="list-group">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Game</th>
+                <th scope="col">Plataforma</th>
+            </tr>
+        </thead>
+        <tbody>
         @foreach ($games as $game)
-        <li class="list-group-item">{{$game}}</li>
+            <tr>
+                <td> {{$game->nome}}</td>
+                <td> {{$game->plataforma}}</td>
+            </tr>
         @endforeach
-    </ul>
+        </tbody>
+    </table>
 </x-layout>
