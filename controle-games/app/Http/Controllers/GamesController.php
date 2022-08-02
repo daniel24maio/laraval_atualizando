@@ -20,13 +20,8 @@ class GamesController extends Controller
 
     public function store(Request $request)
     {
-        $nomeGame = $request->input('nome');
-        $nomePlataforma = $request->input('plataforma');
+        Games::create($request->all());
 
-        $game = new Games();
-        $game->nome = $nomeGame;
-        $game->plataforma = $nomePlataforma;
-        $game->save();
         return redirect('/games');
     }
 }

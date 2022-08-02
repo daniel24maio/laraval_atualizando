@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GamesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/home');
 });
 
-Route::get('/games', [\App\Http\Controllers\GamesController::class, 'index']);
-Route::get('/games/criar', [\App\Http\Controllers\GamesController::class, 'create']);
-Route::post('/games/salvar', [\App\Http\Controllers\GamesController::class, 'store']);
+Route::controller(GamesController::class)->group(function(){
+
+    Route::get('/games', 'index');
+    Route::get('/games/criar','create');
+    Route::post('/games/salvar', 'store');
+
+});
+
 
