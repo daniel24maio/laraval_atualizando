@@ -1,5 +1,11 @@
 <x-layout title="Games" >
     <a href="{{route('games.create')}}" class="btn btn-dark mb-2">Adicionar Game</a>
+
+    @isset($mensagemSucesso)
+    <div class="alert alert-success">
+        {{ $mensagemSucesso }}
+    </div>
+    @endisset
     <table class="table table-striped">
         <thead>
             <tr>

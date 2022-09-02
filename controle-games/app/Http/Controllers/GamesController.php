@@ -8,9 +8,11 @@ class GamesController extends Controller
 {
     public function index(Request $request)
     {
-        $games = Games::all();
+        $games = Games::query()->orderBy('nome')->get();
+        $mensagemSucesso = $request->session()->get('mensagem.sucesso');
+        //$request->session()->forget('mensagem.sucesso');
 
-        return view('games.index', compact('games'));
+        return view('games.index', compact('games'), compact('mensagemSucesso'));
     }
 
     public function create()
@@ -22,12 +24,17 @@ class GamesController extends Controller
     {
         Games::create($request->all());
 
+        $request->session()->flash('mensagem.sucesso', 'Game inserido com sucesso');
+
         return to_route('games.index');
     }
 
     public function destroy(Request $request)
     {
         Games::destroy($request->game);
+        //$request->session()->put('mensagem.sucesso', 'Game removido com sucesso');
+        $request->session()->flash('mensagem.sucesso', 'Game removido com sucesso');
+
         return to_route('games.index');
     }
 }
