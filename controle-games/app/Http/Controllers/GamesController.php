@@ -25,7 +25,9 @@ class GamesController extends Controller
         return to_route('games.index');
     }
 
-    public function home(){
-        return view('home.index');
+    public function destroy(Request $request)
+    {
+        Games::destroy($request->game);
+        return to_route('games.index');
     }
 }

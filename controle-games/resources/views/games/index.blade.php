@@ -12,7 +12,17 @@
             <tr>
                 <td> {{$game->nome}}</td>
                 <td> {{$game->plataforma}}</td>
+                <td>
+                    <form action="{{route('games.destroy',$game->id)}}" method="post" >
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger btn-sm ">
+                            Apagar
+                        </button>
+                    </form>
+                </td>
             </tr>
+
         @endforeach
         </tbody>
     </table>

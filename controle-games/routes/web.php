@@ -18,12 +18,14 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
-Route::resource('/games', GamesController::class);
+Route::resource('/games', GamesController::class)
+    ->only(['index','create','store','destroy']);
 /*
 Route::controller(GamesController::class)->group(function(){
     Route::get('/games', 'index');
     Route::get('/games/criar','create');
     Route::post('/games/salvar', 'store');
 });
+Route::post('/games/destroy/{game}', [GamesController::class, 'destroy'])->name('games.destroy');
 */
 
