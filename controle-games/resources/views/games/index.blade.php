@@ -1,5 +1,5 @@
 <x-layout title="Games" >
-    <a href="/games/criar" class="btn btn-dark mb-2">Adicionar Game</a>
+    <a href="{{route('games.create')}}" class="btn btn-dark mb-2">Adicionar Game</a>
     <table class="table table-striped">
         <thead>
             <tr>

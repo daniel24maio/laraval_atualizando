@@ -1,5 +1,5 @@
 <x-layout title="Novo Game">
- <form  action="/games/salvar" method="post">
+ <form  action="{{route('games.store')}}" method="post">
      @csrf
      <div class="mb-3">
      <label for="nome" class="form-label"> Nome do Game</label>

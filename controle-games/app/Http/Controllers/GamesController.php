@@ -22,6 +22,10 @@ class GamesController extends Controller
     {
         Games::create($request->all());
 
-        return redirect('/games');
+        return to_route('games.index');
+    }
+
+    public function home(){
+        return view('home.index');
     }
 }
