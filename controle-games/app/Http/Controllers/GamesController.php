@@ -22,6 +22,10 @@ class GamesController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+           'nome' => ['required','min:2'],
+           'plataforma' =>['required']
+        ]);
         $game = Games::create($request->all());
 
         return to_route('games.index')->with('mensagem.sucesso', "Game '{$game->nome}'inserido com sucesso");
