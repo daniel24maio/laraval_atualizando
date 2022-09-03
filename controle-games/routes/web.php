@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/games', GamesController::class)
-    ->only(['index','create','store','destroy']);
+    ->except(['show']);
 /*
 Route::controller(GamesController::class)->group(function(){
     Route::get('/games', 'index');

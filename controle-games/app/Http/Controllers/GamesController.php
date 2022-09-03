@@ -12,7 +12,7 @@ class GamesController extends Controller
         $mensagemSucesso = $request->session()->get('mensagem.sucesso');
         //$request->session()->forget('mensagem.sucesso');
 
-        return view('games.index', compact('games'), compact('mensagemSucesso'));
+        return view('games.index')->with('games',$games)->with('mensagemSucesso',$mensagemSucesso);
     }
 
     public function create()
@@ -22,19 +22,30 @@ class GamesController extends Controller
 
     public function store(Request $request)
     {
-        Games::create($request->all());
+        $game = Games::create($request->all());
 
-        $request->session()->flash('mensagem.sucesso', 'Game inserido com sucesso');
-
-        return to_route('games.index');
+        return to_route('games.index')->with('mensagem.sucesso', "Game '{$game->nome}'inserido com sucesso");
     }
 
-    public function destroy(Request $request)
+    public function destroy(Games $game)
     {
-        Games::destroy($request->game);
+        $game->delete();
         //$request->session()->put('mensagem.sucesso', 'Game removido com sucesso');
-        $request->session()->flash('mensagem.sucesso', 'Game removido com sucesso');
-
-        return to_route('games.index');
+        return to_route('games.index')->with('mensagem.sucesso', "Game '{$game->nome}' removido com sucesso");
     }
+
+    public function edit(Games $game)
+    {
+        return view('games.edit')->with('game',$game);
+
+    }
+
+    public function update(Games $game, Request $request)
+    {
+        $game->fill($request->all());
+        $game->save();
+
+        return to_route('games.index')->with('mensagem.sucesso', "Game '{$game->nome}' editado com sucesso");
+    }
+
 }

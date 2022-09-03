@@ -19,6 +19,13 @@
                 <td> {{$game->nome}}</td>
                 <td> {{$game->plataforma}}</td>
                 <td>
+                    <a href="{{route('games.edit',$game->id)}}">
+                        <button class="btn btn-primary btn-sm ">
+                            Editar
+                        </button>
+                    </a>
+                </td>
+                <td>
                     <form action="{{route('games.destroy',$game->id)}}" method="post" >
                         @csrf
                         @method('DELETE')
